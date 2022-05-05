@@ -52,7 +52,7 @@ values('32219983L','celia','633144887', 'calle salamanca, 1', 1, 1234);
 insert into jugador (dni,nombre,telefono,direccion,id_equipo,sueldo)
 values('44108428V','alba','877412332', 'calle villareal, 12 a', 1, 1234); 
 
-select * from jugador;
+
 
 /*JUGADORES EQUIPO FRANCES ID2*/
 
@@ -127,14 +127,14 @@ VALUES ('72670608S','Jeffrey Ortiz','890652188','75 Grange Valley- Haydock',4);
 
 
 /*INSERT CALENDARIO*/
-desc calendario;
+
 /*temporada???*/
 /*hecho!*/
 
 insert into calendario (cerrado, temporada) values ('n','uno');
 
 /*INSERT JORNADA*/
-DESC JORNADA;
+
 insert into jornada(fecha,num_semana,id_calendario) 
 values (to_date('07/05/2022','DD/MM/YYYY'),'18',1);
 
