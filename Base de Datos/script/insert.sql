@@ -124,7 +124,8 @@ VALUES ('72670608S','Jeffrey Ortiz','890652188','75 Grange Valley- Haydock',4);
 
 
 /*INSERT ROL. Hay que cambiar las relaciones*/
-
+desc rol;
+insert into rol(nombre, descripcion) values ('defensa','esta misma');
 
 /*INSERT CALENDARIO*/
 

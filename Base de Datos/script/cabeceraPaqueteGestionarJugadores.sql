@@ -23,5 +23,4 @@ procedure borrar_jugador
 p_idJugador jugador.id_jugador%type
 );
 
-
 end gestionarJugadores;
