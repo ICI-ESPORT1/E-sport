@@ -1,5 +1,4 @@
 /*insert equipo*/
-desc equipo;
 
 insert into equipo (nombre, nacionalidad, fecha_creacion, telefono, mail, escudo)
 values('force', 'espanola', to_date('01/01/2022', 'DD/MM/YYYY'),654987321, 
@@ -18,40 +17,34 @@ values('stacks', 'inglesa', to_date('14/03/2021', 'DD/MM/YYYY'),632598145,
 insert into equipo (nombre, nacionalidad, fecha_creacion, telefono, mail, escudo)
 values('players', 'alemana', to_date('01/04/2020', 'DD/MM/YYYY'),648211557, 
         'players@gmail.com', 'tiene');
-select * from equipo;
-/*INSERTADOS!*/
-/*Controlar el numero de id? 
-Controlar que no se repita el nombre de equipo*/
 
 /*INSERT ENTRENADOR*/
 insert into entrenador(dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('49547320h','antonio fernandez','66677788','calle dato 5 4º izq', 1, 1450);
+values('49547320h','antonio fernandez','66677788','calle dato 5 4ï¿½ izq', 1, 1450);
 
 insert into entrenador(dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('82184054v','gaston gael','665887994','calle gatien 35 1º a', 2, 1530);
+values('82184054v','gaston gael','665887994','calle gatien 35 1ï¿½ a', 2, 1530);
 
 insert into entrenador(dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('34899408j','harry wilson','655881226','calle davies taylor 2 4º', 3, 1750);
+values('34899408j','harry wilson','655881226','calle davies taylor 2 4ï¿½', 3, 1750);
 
 insert into entrenador(dni,nombre,telefono,direccion,id_equipo,sueldo)
 values('56499147s','unter den linden','68822154','calle dato 59', 4, 1950);
 
-/*INSERT HECHO!*/
 
 /*INSERT JUGADOR 4 EQUIPOS (1-4), MIN 2 JUGADORES, MAX 6*/
-desc jugador;
-/*JUGADORES EQUIPO ESPAÑOL ID1*/
+/*JUGADORES EQUIPO ESPAï¿½OL ID1*/
 insert into jugador (dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('14226872s','iker','654321987', 'calle gorbea, 7 5ºd', 1, 1234);
+values('14226872s','iker','654321987', 'calle gorbea, 7 5ï¿½d', 1, 1234);
 
 insert into jugador (dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('84494056Z','ana','789654123', 'calle reyes catolicos, 5 3ºa', 1, 1234);
+values('84494056Z','ana','789654123', 'calle reyes catolicos, 5 3ï¿½a', 1, 1234);
 
 insert into jugador (dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('95393136S','ivan','865412354', 'calle alcala, 2 4ºc', 1, 1234);
+values('95393136S','ivan','865412354', 'calle alcala, 2 4ï¿½c', 1, 1234);
 
 insert into jugador (dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('23971838L','iñigo','678854112', 'calle zaragoza, 12 1ºd', 1, 1234);
+values('23971838L','iï¿½igo','678854112', 'calle zaragoza, 12 1ï¿½d', 1, 1234);
 
 insert into jugador (dni,nombre,telefono,direccion,id_equipo,sueldo)
 values('32219983L','celia','633144887', 'calle salamanca, 1', 1, 1234);
@@ -131,8 +124,7 @@ VALUES ('72670608S','Jeffrey Ortiz','890652188','75 Grange Valley- Haydock',4);
 
 
 /*INSERT ROL. Hay que cambiar las relaciones*/
-desc rol;
-/*CORREGIR FALLO*/
+
 
 /*INSERT CALENDARIO*/
 desc calendario;
@@ -158,7 +150,7 @@ values (to_date('27/05/2022','DD/MM/YYYY'),'21',1);
 /*hecho!*/
 
 /*INSERT PARTIDO*/
-DESC PARTIDO;
+
 insert into partido(hora,num_jornada) values(to_date('07/05/2022','DD/MM/YYYY'),1);
 
 insert into partido (hora,num_jornada) values (to_date('14/05/2022','DD/MM/YYYY'),2);

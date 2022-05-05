@@ -99,7 +99,7 @@ fecha date,
 num_semana varchar2(2) CONSTRAINT jor_nums_un UNIQUE,
 id_calendario number(3),
 CONSTRAINT jor_num_fk FOREIGN KEY (id_calendario)
-        REFERENCES calendario(id) ON DELETE SET NULL
+        REFERENCES calendario(id_calendario) ON DELETE SET NULL
 );
 
 

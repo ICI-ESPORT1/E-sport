@@ -2,21 +2,45 @@
 /*1. Controlar el max de jugadores por equipos*/
 set serveroutput on
 
-create or replace trigger jugMax
-before insert on jugador
-for each row
-declare 
-v_numJugadores PLS_INTEGER;
+/*triggerCompuesto*/
+create or replace trigger equipoCompleto
+for insert or update on jugador compound trigger
+new_jugador jugador%rowtype;
+v_countJugador number;
+
+before each row is
 begin
-    select count(*) into v_numJugadores
+
+if inserting then
+new_jugador.id_jugador := :new.id_jugador;
+new_jugador.dni := :new.dni;
+new_jugador.nombre := :new.nombre;
+new_jugador.telefono := :new.telefono;
+new_jugador.direccion := :new.direccion;
+new_jugador.id_equipo := :new.id_equipo;
+new_jugador.sueldo := :new.sueldo;
+new_jugador.id_rol := :new.id_rol;
+
+
+else
+new_jugador.id_equipo := :new.id_equipo;
+end if;
+
+end before each row;
+
+after statement is
+begin
+select count(*) into v_countJugador
     from jugador
-    where id_equipo= :new.id_equipo;
-  if v_numJugadores = 6 then
+    where id_equipo= new_jugador.id_equipo;
+    DBMS_OUTPUT.put_line(v_countJugador);
+if v_countJugador >= 6 then
     raise_application_error(-20007,'ERROR: EQUIPO COMPLETO');
   END IF;
-END;
+end after statement;
+end equipoCompleto;
 
-alter  trigger jugMax disable; 
+/*alter  trigger equipoCompleto disable; */
 
 /*2. Controlar que una vez generado el calendario no se pueden modificar,
 ni equipos, ni jugadores*/

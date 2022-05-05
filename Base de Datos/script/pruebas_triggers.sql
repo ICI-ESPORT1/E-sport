@@ -9,28 +9,34 @@ where id_equipo=1;
 ----------
          6*/
          
-/*El equipo 1 tiene 6 jugadores, el trigger debe impedir que se añada un 
+/*El equipo 1 tiene 6 jugadores, el trigger debe impedir que se aï¿½ada un 
 nuevo jugador*/
 select nombre
 from jugador
 where id_equipo=1;
+
+delete from jugador
+where upper(nombre)='ISABEL';
 /*NOMBRE                                            
 ---------
 iker
 ana
 ivan
-iñigo
+iï¿½igo
 celia
 alba*/
+
 INSERT INTO jugador(dni,nombre,telefono,direccion,id_equipo,sueldo)
-values('34483008M','Isabel','666333111','estoy probando 7',1, 1500);
-/*Error que empieza en la línea: 21 del comando :
+values('34483018M','Isabel','666333113','estoy probando 7',1, 15700);
+
+
+/*Error que empieza en la lï¿½nea: 21 del comando :
 INSERT INTO jugador(dni,nombre,telefono,direccion,id_equipo,sueldo)
 values('34483008M','Isabel','666333111','estoy probando 7',1, 1500)
 Informe de error -
 ORA-20007: ERROR: EQUIPO COMPLETO
-ORA-06512: en "SYSTEM.JUGMAX", línea 8
-ORA-04088: error durante la ejecución del disparador 'SYSTEM.JUGMAX'*/
+ORA-06512: en "SYSTEM.JUGMAX", lï¿½nea 8
+ORA-04088: error durante la ejecuciï¿½n del disparador 'SYSTEM.JUGMAX'*/
 
 select nombre
 from jugador
@@ -41,9 +47,14 @@ where id_equipo=1;
 iker
 ana
 ivan
-iñigo
+iï¿½igo
 celia
 alba*/
+
+/*PRUEBA CON UPDATE JUGADOR*/
+update jugador
+set id_equipo = 1
+where upper(nombre)= 'BERTRAND LEROY';
 
 /*HAGO UN INSERT EN OTRO EQUIPO QUE NO ESTE COMPLETO*/
 select count(*)
@@ -83,10 +94,10 @@ Isabel*/
 desc calendario;
 insert into calendario(cerrado, temporada) values('n',2);
 /*
-Error que empieza en la línea: 84 del comando :
+Error que empieza en la lï¿½nea: 84 del comando :
 insert into calendario(cerrado, temporada) values('n',2)
 Informe de error -
 ORA-20009: ERROR: YA EXISTE UN CALENDARIO
-ORA-06512: en "SYSTEM.EXISTECALENDARIO", línea 8
-ORA-04088: error durante la ejecución del disparador 'SYSTEM.EXISTECALENDARIO'*/
+ORA-06512: en "SYSTEM.EXISTECALENDARIO", lï¿½nea 8
+ORA-04088: error durante la ejecuciï¿½n del disparador 'SYSTEM.EXISTECALENDARIO'*/
 
