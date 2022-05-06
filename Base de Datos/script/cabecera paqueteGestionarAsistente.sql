@@ -6,14 +6,14 @@ p_dni asistente.dni%type,
 p_nombre asistente.nombre%type,
 p_telefono asistente.telefono%type,
 p_direccion asistente.direccion%type,
-p_id_equipo asistente.id_equipo%type,
+p_id_equipo equipo.cod_equipo%type,
 p_sueldo asistente.sueldo%type
 );
 
 procedure cambio_equipo
 (
 p_idAsistente asistente.id_asistente%type,
-p_idEquipoNuevo asistente.id_equipo%type
+p_idEquipoNuevo equipo.cod_equipo%type
 );
 
 procedure borrar_asistente

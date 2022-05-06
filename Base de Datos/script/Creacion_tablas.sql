@@ -13,6 +13,16 @@ DROP TABLE administrador CASCADE CONSTRAINTS;
 DROP TABLE grupo_usuario CASCADE CONSTRAINTS;
 
 
+CREATE TABLE asistente(
+id_asistente number(3) GENERATED ALWAYS AS IDENTITY CONSTRAINT asis_id_pk PRIMARY KEY,
+dni varchar2(9) CONSTRAINT asis_dni_un UNIQUE,
+nombre varchar2(50),
+telefono varchar2(9) CONSTRAINT asis_tel_un UNIQUE,
+direccion varchar2(50),
+sueldo number(5) CONSTRAINT asis_suel_ck CHECK(sueldo BETWEEN 1000 AND 200000)
+);
+
+
 CREATE TABLE equipo(
 cod_equipo number(3) GENERATED ALWAYS AS IDENTITY CONSTRAINT eq_cod_pk PRIMARY KEY,
 nombre varchar2(20) CONSTRAINT eq_nom_un UNIQUE,
@@ -20,7 +30,10 @@ nacionalidad varchar2(50),
 fecha_creacion date,
 telefono number(9) CONSTRAINT eq_tel_un UNIQUE,
 mail VARCHAR2(150) CONSTRAINT eq_mail_un UNIQUE,
-escudo varchar2(150)
+escudo varchar2(150),
+id_asistente number(3) NULL,
+CONSTRAINT eq_ida_fk FOREIGN KEY (id_asistente)
+REFERENCES asistente(id_asistente) ON DELETE SET NULL
 );
 
 
@@ -52,25 +65,12 @@ telefono varchar2(9) CONSTRAINT jug_tel_un UNIQUE,
 direccion varchar2(50),
 id_equipo number(3),
 nickname varchar2(50) CONSTRAINT jug_nick_un UNIQUE,
-sueldo number(6) CONSTRAINT jug_suel_ck CHECK(sueldo BETWEEN 1000 AND 200000),
+sueldo number(6) CONSTRAINT jug_suel_ck CHECK(sueldo>1000),
 id_rol number(2),
     CONSTRAINT jug_ideq_fk FOREIGN KEY (id_equipo)
 				REFERENCES equipo(cod_equipo) ON DELETE SET NULL,
     CONSTRAINT jug_idr_fk FOREIGN KEY (id_rol)
                 REFERENCES rol(id_rol) ON DELETE SET NULL  
-);
-
-
-CREATE TABLE asistente(
-id_asistente number(3) GENERATED ALWAYS AS IDENTITY CONSTRAINT asis_id_pk PRIMARY KEY,
-dni varchar2(9) CONSTRAINT asis_dni_un UNIQUE,
-nombre varchar2(50),
-telefono varchar2(9) CONSTRAINT asis_tel_un UNIQUE,
-direccion varchar2(50),
-id_equipo number(3),
-sueldo number(5) CONSTRAINT asis_suel_ck CHECK(sueldo BETWEEN 1000 AND 200000),
-	CONSTRAINT asis_ideq_fk FOREIGN KEY (id_equipo)
-				REFERENCES equipo(cod_equipo) ON DELETE SET NULL
 );
 
 

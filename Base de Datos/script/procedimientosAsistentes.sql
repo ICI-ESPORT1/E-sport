@@ -1,6 +1,6 @@
 /*PROCEDIMIENTOS ASISTENTES*/
 
-/*FUNCION PARA COMPROBAR SI EXISTE EL EQUIPO AL QUE SE QUIERE AÑADIR EL ASISTENTE*/
+/*FUNCION PARA COMPROBAR SI EXISTE EL EQUIPO AL QUE SE QUIERE Aï¿½ADIR EL ASISTENTE*/
 create or replace function validar_equipo
 (p_equipo in number)
 return boolean
@@ -38,15 +38,15 @@ p_dni asistente.dni%type,
 p_nombre asistente.nombre%type,
 p_telefono asistente.telefono%type,
 p_direccion asistente.direccion%type,
-p_id_equipo asistente.id_equipo%type,
+p_id_equipo equipo.cod_equipo%type,
 p_sueldo asistente.sueldo%type
 )
 is
 begin
   if validar_equipo(p_id_equipo)then
    insert into asistente
-   (dni,nombre,telefono,direccion,id_equipo,sueldo) values
-   (p_dni,p_nombre,p_telefono,p_direccion,p_id_equipo,p_sueldo);
+   (dni,nombre,telefono,direccion,sueldo) values
+   (p_dni,p_nombre,p_telefono,p_direccion,p_sueldo);
   else
     dbms_output.put_line ('El equipo no existe');
   end if;
@@ -58,15 +58,15 @@ END nuevo_asistente;
 create or replace procedure cambio_equipo
 (
 p_idAsistente asistente.id_asistente%type,
-p_idEquipoNuevo asistente.id_equipo%type
+p_idEquipoNuevo equipo.cod_equipo%type
 )
 is
 begin
  if validar_asistente(p_idAsistente) then
     if validar_equipo(p_idEquipoNuevo)then
-      update asistente
-      set id_equipo = p_idEquipoNuevo
-      where id_asistente = p_idAsistente;
+      update equipo
+      set id_asistente =  p_idAsistente
+      where cod_equipo = p_idEquipoNuevo;
     else
       dbms_output.put_line ('El equipo no existe');
     end if;

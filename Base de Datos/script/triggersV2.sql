@@ -1,6 +1,28 @@
 /*TRIGGERS*/
+
 /*1. Controlar el max de jugadores por equipos*/
 set serveroutput on
+
+create or replace function contarJugadores
+(p_newEquipo in number)
+return boolean
+is
+  v_countJugador NUMBER;
+begin
+  select count(*) into v_countJugador
+    from jugador
+    where id_equipo= p_newEquipo;
+if v_countJugador >= 6 then
+  return true;
+else
+return false;
+end if;
+exception
+   when no_data_found then
+     return false;
+end contarJugadores;
+
+
 
 /*triggerCompuesto*/
 create or replace trigger equipoCompleto
@@ -30,11 +52,8 @@ end before each row;
 
 after statement is
 begin
-select count(*) into v_countJugador
-    from jugador
-    where id_equipo= new_jugador.id_equipo;
-    DBMS_OUTPUT.put_line(v_countJugador);
-if v_countJugador >= 6 then
+
+if contarJugadores(new_jugador.id_equipo) then
     raise_application_error(-20007,'ERROR: EQUIPO COMPLETO');
   END IF;
 end after statement;

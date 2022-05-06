@@ -1,6 +1,6 @@
 /*PROCEDIMIENTOS*/
 /*PROCEDIMIENTO JUGADORES*/
-/*FUNCION PARA COMPROBAR SI EXISTE EL EQUIPO AL QUE SE QUIERE AÑADIR EL JUGADOR*/
+/*FUNCION PARA COMPROBAR SI EXISTE EL EQUIPO AL QUE SE QUIERE Aï¿½ADIR EL JUGADOR*/
 create or replace function validar_equipo
 (p_equipo in number)
 return boolean
@@ -32,7 +32,7 @@ exception
 end validar_jugador;
 
 
-/*PROCEDIMIENTO PARA AÑADIR JUGADORES*/
+/*PROCEDIMIENTO PARA Aï¿½ADIR JUGADORES*/
 create or replace procedure nuevo_jugador
 (
 p_dni jugador.dni%type,
@@ -105,46 +105,6 @@ END borrar_jugador;
 
 
 
-
-
-
-
-
-
-
-
-
-/*1. PROCEDIMIENTO PARA OBTENER LA CLASIFICACION*/
-desc resultados_temporada
-/*Nombre    Â¿Nulo?   Tipo         
---------- -------- ------------ 
-JORNADA   NOT NULL NUMBER(3)    
-FECHA              DATE         
-SEMANA             VARCHAR2(2)  
-PARTIDO   NOT NULL NUMBER(3)    
-HORA               DATE         
-CODEQUIPO NOT NULL NUMBER(3)    
-EQUIPO             VARCHAR2(20) 
-RESULTADO          VARCHAR2(5)  */
-
-select * from resultados_temporada;
-/*OBTENER ULTIMO PARTIDO*/
-
-
-select equipo, resultado
-from resultados_temporada
-where fecha = (select max(fecha)
-                from resultados_temporada);
-
-
-
-create or replace procedure resultadoUltimoPartido
-(
-v_resultado out varchar2,
-v_equipo out varchar2
-)
-as
-v_registro resultados_temporada%rowtype;
 
 
 

@@ -39,42 +39,42 @@ exception
     return false;
 end validar_asistente;
 /*EMPIEZAN LOS PROCEDIMIENTOS ************************************************/
-/*AÑADIR NUEVO ASISTENTE*/
+/*Aï¿½ADIR NUEVO ASISTENTE*/
 procedure nuevo_asistente
 (
 p_dni asistente.dni%type,
 p_nombre asistente.nombre%type,
 p_telefono asistente.telefono%type,
 p_direccion asistente.direccion%type,
-p_id_equipo asistente.id_equipo%type,
+p_id_equipo equipo.cod_equipo%type,
 p_sueldo asistente.sueldo%type
 )
 is
 begin
   if validar_equipo(p_id_equipo)then
    insert into asistente
-   (dni,nombre,telefono,direccion,id_equipo,sueldo) values
-   (p_dni,p_nombre,p_telefono,p_direccion,p_id_equipo,p_sueldo);
+   (dni,nombre,telefono,direccion,sueldo) values
+   (p_dni,p_nombre,p_telefono,p_direccion,p_sueldo);
   else
     dbms_output.put_line ('El equipo no existe');
   end if;
  exception
    when others then
      dbms_output.put_line('HA OCURRIDO UN ERROR');
-END nuevo_asistente;
+END nuevo_asistente;  
 
 procedure cambio_equipo
 (
 p_idAsistente asistente.id_asistente%type,
-p_idEquipoNuevo asistente.id_equipo%type
+p_idEquipoNuevo equipo.cod_equipo%type
 )
 is
 begin
  if validar_asistente(p_idAsistente) then
     if validar_equipo(p_idEquipoNuevo)then
-      update asistente
-      set id_equipo = p_idEquipoNuevo
-      where id_asistente = p_idAsistente;
+      update equipo
+      set id_asistente =  p_idAsistente
+      where cod_equipo = p_idEquipoNuevo;
     else
       dbms_output.put_line ('El equipo no existe');
     end if;
@@ -104,7 +104,6 @@ begin
      dbms_output.put_line('HA OCURRIDO UN ERROR');
 END borrar_asistente;
 end gestionarAsistente;
-
 
 
 
